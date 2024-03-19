@@ -1,0 +1,20 @@
+.im-fell  {
+  font-family: "IM Fell French Canon SC", serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: larger;
+}
+
+
+.tiro-devanagari {
+  font-family: "Tiro Devanagari Marathi", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.edu-tas  {
+  font-family: "Edu TAS Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
