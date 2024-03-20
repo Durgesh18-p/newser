@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { indexIncrement } from "./newsReducer";
-import slogans from "./data";
+import { slogans } from "./data";
 
 const Header = () => {
   const index = useSelector((state) => state.news.index);
-  console.log(index);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(indexIncrement());
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
