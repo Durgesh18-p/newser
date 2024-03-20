@@ -1,23 +1,27 @@
 import { countries, categories } from "./data";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedCategory, setSelectedCountry } from "./newsReducer";
 
 const Navigation = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const dispatch = useDispatch();
+  const city = useSelector((state) => state.news.country);
+  const category = useSelector((state) => state.news.category);
+  console.log(city);
+  console.log(category);
 
   const handleCountrySelector = (e) => {
-    setSelectedCountry(e.target.value);
-    console.log("Selected country:", e.target.value);
+    const countryname = e.target.value;
+    dispatch(setSelectedCountry(countryname));
   };
 
   const handleCategorySelector = (e) => {
-    setSelectedCategory(e.target.value);
-    console.log("Selected category:", e.target.value);
+    const categoryName = e.target.value;
+    dispatch(setSelectedCategory(categoryName));
   };
 
   return (
-    <nav className="border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center">
-      <div className="w-[700px] flex justify-around items-center">
+    <nav className="border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center w-[100vw]">
+      <div className="w-[70%] flex justify-around items-center md:w-[100%]">
         <div>
           {" "}
           <select
