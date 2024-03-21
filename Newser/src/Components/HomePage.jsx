@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
@@ -36,42 +37,41 @@ const HomePage = () => {
           news;
 
         return (
-          <div
-            key={index}
-            className=" border-[2px] p-[10px] relative h-[485px]"
-          >
-            <img src={urlToImage} alt="" className="w-[100%] h-[250px]" />
+          <Link key={index} to={url}>
+            <div className=" border-[2px] p-[10px] relative h-[485px]">
+              <img src={urlToImage} alt="" className="w-[100%] h-[250px]" />
 
-            <p className=" text-[#8076f1] hover:text-[#eec0c0] text-[18px] w-[400px] tiro-devanagari font-normal mt-[5px]">
-              {title}.{" "}
-            </p>
+              <p className=" text-[#8076f1] hover:text-[#eec0c0] text-[18px] w-[400px] tiro-devanagari font-normal mt-[5px]">
+                {title}.{" "}
+              </p>
 
-            <p className="mt-[5px] mb-[2px] roboto-slab text-[16px] text-[#202224]">
-              {content.slice(0, 80)}...
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer "
-                className="edu-tas hover:text-[blue]"
-              >
-                read more
-              </a>
-            </p>
-            <p className="mt-[12px] mb-[2px] roboto-slab text-[14px] text-[#202224]">
-              {description.slice(0, 200)}{" "}
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="edu-tas hover:text-[blue]"
-              >
-                ...read more
-              </a>
-            </p>
-            <p className=" absolute right-[20px] bottom-[5px] roboto-slab text-[14px]">
-              {publishedAt.slice(0, 10)}{" "}
-            </p>
-          </div>
+              <p className="mt-[5px] mb-[2px] roboto-slab text-[16px] text-[#202224]">
+                {content.slice(0, 80)}...
+                <Link
+                  to={url}
+                  target="_blank"
+                  rel="noopener noreferrer "
+                  className="edu-tas hover:text-[blue]"
+                >
+                  read more
+                </Link>
+              </p>
+              <p className="mt-[12px] mb-[2px] roboto-slab text-[14px] text-[#202224]">
+                {description.slice(0, 200)}{" "}
+                <Link
+                  to={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="edu-tas hover:text-[blue]"
+                >
+                  ...read more
+                </Link>
+              </p>
+              <p className=" absolute right-[20px] bottom-[5px] roboto-slab text-[14px]">
+                {publishedAt.slice(0, 10)}{" "}
+              </p>
+            </div>
+          </Link>
         );
       })}
     </div>
