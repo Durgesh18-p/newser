@@ -27,7 +27,7 @@ const Navigation = () => {
           <select
             name="country"
             id="country"
-            className="border-[1px] border-[#000000] text-[#5d686c] font-[500] rounded"
+            className="border-[1px] border-[#000000] text-[#5d686c] font-[500] rounded "
             onChange={handleCountrySelector}
           >
             <option value="">Select Country</option>
@@ -44,7 +44,7 @@ const Navigation = () => {
           <select
             name="category"
             id="category"
-            className="border-[1px] border-[#000000] text-[#5d686c] font-[500] rounded"
+            className="border-[1px] border-[#000000] text-[#5d686c] font-[500] rounded w-[240px] cursor-pointer"
             onChange={handleCategorySelector}
           >
             <option value="">Select Category</option>
