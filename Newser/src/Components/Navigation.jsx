@@ -20,17 +20,17 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center w-[100vw]">
+    <nav className="border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center w-[100vw] ">
       <div className="w-[70%] flex justify-around items-center md:w-[100%]">
         <div>
           {" "}
           <select
             name="country"
             id="country"
-            className="border-[1px] border-[#000000] text-[#5d686c] font-[500] rounded "
+            className="border-[1px] border-[#000000] text-[#485155] font-[500] rounded cursor-pointer "
             onChange={handleCountrySelector}
           >
-            <option value="">Select Country</option>
+            <option value="">Country</option>
             {countries.map((country) => {
               return (
                 <option value={country.code} key={country.code}>
@@ -44,10 +44,10 @@ const Navigation = () => {
           <select
             name="category"
             id="category"
-            className="border-[1px] border-[#000000] text-[#5d686c] font-[500] rounded w-[240px] cursor-pointer"
+            className="border-[1px] border-[#000000] text-[#485155] font-[500] rounded w-[240px] cursor-pointer "
             onChange={handleCategorySelector}
           >
-            <option value="">Select Category</option>
+            <option value="">Category</option>
             {categories.map((category) => {
               return (
                 <option value={category.code} key={category.code}>
