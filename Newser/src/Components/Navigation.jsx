@@ -14,9 +14,9 @@ const Navigation = () => {
     dispatch(setSelectedCountry(countryname));
   };
 
-  const handleCategorySelector = (e) => {
-    const categoryName = e.target.value;
-    dispatch(setSelectedCategory(categoryName));
+  const handleCategorySelector = (category) => {
+    console.log(category.code);
+    dispatch(setSelectedCategory(category.code));
   };
 
   return (
@@ -27,13 +27,17 @@ const Navigation = () => {
           <select
             name="country"
             id="country"
-            className="border-[1px] border-[#000000] text-[#485155] font-[500] rounded cursor-pointer "
+            className="border-[1px] border-[#000000] text-[#485155] font-bold rounded cursor-pointer p-[3px]"
             onChange={handleCountrySelector}
           >
             <option value="">Country</option>
             {countries.map((country) => {
               return (
-                <option value={country.code} key={country.code}>
+                <option
+                  value={country.code}
+                  key={country.code}
+                  className="ml-[55px]"
+                >
                   {country.name}
                 </option>
               );
@@ -41,21 +45,23 @@ const Navigation = () => {
           </select>
         </div>
         <div>
-          <select
-            name="category"
-            id="category"
-            className="border-[1px] border-[#000000] text-[#485155] font-[500] rounded w-[240px] cursor-pointer "
-            onChange={handleCategorySelector}
+          <ul
+            className="flex
+          justify-evenly items-center gap-[25px]
+          "
           >
-            <option value="">Category</option>
             {categories.map((category) => {
               return (
-                <option value={category.code} key={category.code}>
+                <li
+                  key={category.code}
+                  className="font-bold text-[#485155] border-r-[1px] pr-[15px] border-[#000000] cursor-pointer hover:text-[#000000]"
+                  onClick={() => handleCategorySelector(category)}
+                >
                   {category.name}
-                </option>
+                </li>
               );
             })}
-          </select>
+          </ul>
         </div>
       </div>
     </nav>
