@@ -41,7 +41,7 @@ const HomePage = () => {
             <div className=" border-[2px] p-[10px] relative h-[485px]">
               <img src={urlToImage} alt="" className="w-[100%] h-[250px]" />
 
-              <p className=" text-[#8076f1] hover:text-[#eec0c0] text-[18px] w-[400px] tiro-devanagari font-normal mt-[5px]">
+              <p className=" text-[#249598] hover:text-[#4338ca] text-[18px] w-[400px] tiro-devanagari font-normal mt-[5px]">
                 {title}.{" "}
               </p>
 
