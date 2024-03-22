@@ -11,7 +11,7 @@ const Newscard = ({
 }) => {
   return (
     <Link to={url}>
-      <div className=" border-[2px] p-[10px] relative h-[485px] rounded-lg hover:border-[#000000] ">
+      <div className=" border-[2px] p-[10px] relative h-[485px] rounded-lg transition-all ease-in-out  hover:border-[#000000] ">
         <img src={urlToImage} alt="" className="w-[100%] h-[250px]" />
 
         <p className=" text-[#249598] hover:text-[#4338ca] text-[18px] w-[400px] tiro-devanagari font-normal mt-[5px]">
@@ -24,7 +24,7 @@ const Newscard = ({
             to={url}
             target="_blank"
             rel="noopener noreferrer "
-            className="edu-tas hover:text-[blue]"
+            className="edu-tas text-[blue]"
           >
             read more
           </Link>
@@ -35,7 +35,7 @@ const Newscard = ({
             to={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="edu-tas hover:text-[blue]"
+            className="edu-tas text-[blue]"
           >
             ...read more
           </Link>

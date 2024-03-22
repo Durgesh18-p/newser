@@ -29,6 +29,7 @@ const Navigation = () => {
             id="country"
             className="border-[1px] border-[#000000] text-[#485155] font-bold rounded cursor-pointer p-[3px]"
             onChange={handleCountrySelector}
+            style={{ maxHeight: "100px" }}
           >
             <option value="">Country</option>
             {countries.map((country) => {
@@ -36,7 +37,7 @@ const Navigation = () => {
                 <option
                   value={country.code}
                   key={country.code}
-                  className="ml-[55px]"
+                  className="ml-[55px] border-[#000000]"
                 >
                   {country.name}
                 </option>
