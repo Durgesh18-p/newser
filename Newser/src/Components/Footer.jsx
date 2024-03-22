@@ -35,23 +35,23 @@ const Footer = () => {
 
         <div className="flex justify-around items-center mt-[20px]">
           <FaLinkedin
-            className="text-[30px] cursor-pointer"
+            className="text-[30px] cursor-pointer  hover:animate-bounce"
             onClick={() => handleLinkedin()}
           />
           <FaWhatsappSquare
-            className="text-[30px] cursor-pointer"
+            className="text-[30px] cursor-pointer hover:animate-bounce"
             onClick={() => {
               handlewhatsapp();
             }}
           />
           <FaXTwitter
-            className="text-[30px] cursor-pointer"
+            className="text-[30px] cursor-pointer hover:animate-bounce"
             onClick={() => {
               handleTwitter();
             }}
           />
           <MdEmail
-            className="text-[30px] cursor-pointer"
+            className="text-[30px] cursor-pointer hover:animate-bounce"
             onClick={() => handleEmail()}
           />
         </div>
