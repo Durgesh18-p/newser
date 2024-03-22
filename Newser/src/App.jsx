@@ -11,6 +11,7 @@ function App() {
       <Navigation />
       <HomePage />
       <Footer />
+      
     </>
   );
 }
