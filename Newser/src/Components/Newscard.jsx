@@ -15,7 +15,7 @@ const Newscard = ({
         <img
           src={urlToImage}
           alt="Image not available"
-          className="w-[100%] h-[250px]"
+          className="w-[100%] h-[250px] border-[1px]"
         />
       </Link>
 

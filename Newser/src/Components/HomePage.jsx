@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import Newscard from "./Newscard";
 import SkeletnLoading from "./SkeletnLoading";
 const HomePage = () => {
-  let country = useSelector((state) => state.news.country);
+  let country = false;
+  let category = false;
+  country = useSelector((state) => state.news.country);
+  category = useSelector((state) => state.news.category);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -35,10 +38,12 @@ const HomePage = () => {
     }, 2000);
 
     return () => clearTimeout(loadingTimeout);
-  }, []); // Empty dependency array to run only once
+  }, []);
 
   useEffect(() => {
-    if (country) {
+    if (category && country) {
+      return;
+    } else if (country) {
       const fetchData = async (country) => {
         try {
           const response = await axios.get(
@@ -64,6 +69,61 @@ const HomePage = () => {
       return () => clearTimeout(loadingTimeout);
     }
   }, [country]);
+
+  useEffect(() => {
+    if (category && country) {
+      return;
+    } else if (category) {
+      const fetchData = async (category) => {
+        try {
+          const response = await axios.get(
+            `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=9f134be0ed224a269de69186ec1358e1`
+          );
+          setData(response.data.articles);
+          setLoading(false);
+        } catch (error) {
+          if (error.response.status === 429) {
+            setTimeout(fetchData, 5000);
+            setLoading(false);
+          } else {
+            setError(error);
+          }
+        }
+      };
+
+      // Simulate loading for 2 seconds
+      const loadingTimeout = setTimeout(() => {
+        fetchData(category);
+      }, 2000);
+
+      return () => clearTimeout(loadingTimeout);
+    }
+  }, [category]);
+
+  useEffect(() => {
+    if (category && country) {
+      const fetchData = async (category, country) => {
+        try {
+          const response = await axios.get(
+            `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=9f134be0ed224a269de69186ec1358e1`
+          );
+          setData(response.data.articles);
+          setLoading(false);
+        } catch (error) {
+          if (error.response.status === 429) {
+            setTimeout(fetchData, 5000);
+            setLoading(false);
+          } else {
+            setError(error);
+          }
+        }
+      };
+
+      fetchData(category, country); // Call fetchData directly here, not inside setTimeout
+
+      return () => {}; // No cleanup needed
+    }
+  }, [category, country]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
