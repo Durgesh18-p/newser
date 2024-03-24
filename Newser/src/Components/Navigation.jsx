@@ -27,17 +27,19 @@ const Navigation = () => {
           <select
             name="country"
             id="country"
-            className="border-[1px] border-[#000000] text-[#485155] font-bold rounded cursor-pointer p-[3px]"
+            className="border-[1px] border-[#000000] text-[#4338ca] font-bold rounded cursor-pointer p-[3px] "
             onChange={handleCountrySelector}
             style={{ maxHeight: "100px" }}
           >
-            <option value="">Country</option>
+            <option value="" className="text-[#485155]">
+              Country
+            </option>
             {countries.map((country) => {
               return (
                 <option
                   value={country.code}
                   key={country.code}
-                  className="ml-[55px] border-[#000000]"
+                  className="ml-[55px] border-[#000000] text-[#485155]"
                 >
                   {country.name}
                 </option>
@@ -55,7 +57,7 @@ const Navigation = () => {
               return (
                 <li
                   key={category.code}
-                  className="font-bold text-[#485155] border-r-[1px] pr-[15px] border-[#000000] cursor-pointer hover:text-[#000000]"
+                  className="font-bold text-[#485155] border-r-[1px] pr-[15px] border-[#000000] cursor-pointer hover:text-[#000000] active:text-[#4338ca]"
                   onClick={() => handleCategorySelector(category)}
                 >
                   {category.name}
