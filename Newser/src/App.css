@@ -25,3 +25,9 @@
 
   font-style: normal;
 }
+
+.input-with-vertical-line {
+  border: none; /* Remove default border */
+  border-left: 2px solid #000000; /* Set a left border with desired width and color */
+  /* You can also use border-right for a line on the right side */
+}
