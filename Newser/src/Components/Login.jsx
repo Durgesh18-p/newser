@@ -45,6 +45,18 @@ const Login = () => {
           </span>
         </h1>
       </div>
+
+      <div className="bg-[#ecf0e7] w-[1210px] absolute top-[170px] left-[82px] h-[34px]  flex justify-between items-center">
+        <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
+          No. 49,425
+        </h2>
+        <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
+          THE BEST SELLING NEWSPAPER IN THE WORLD.
+        </h2>
+        <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
+          Today's Edition
+        </h2>
+      </div>
       <form
         action=""
         className="form-control absolute top-[280px] right-[340px] rounded text-center "
