@@ -57,6 +57,50 @@ const Login = () => {
           Today's Edition
         </h2>
       </div>
+      <div className="w-[1209px] h-[46px] bg-[#38bdf8] absolute top-[204px] left-[80px] border-[#000000] border-t-[1px] border-b-[1px]">
+        <ul className="flex justify-evenly items-center">
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              National
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              world
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              Business
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              Lifestyle
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              Travet
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              Technology
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              Sport
+            </h2>
+          </li>
+          <li className="list-none">
+            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
+              Weather
+            </h2>
+          </li>
+        </ul>
+      </div>
       <form
         action=""
         className="form-control absolute top-[280px] right-[340px] rounded text-center "
