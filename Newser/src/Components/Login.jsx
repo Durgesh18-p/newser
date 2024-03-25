@@ -57,7 +57,7 @@ const Login = () => {
           Today's Edition
         </h2>
       </div>
-      <div className="w-[1209px] h-[46px] bg-[#38bdf8] absolute top-[204px] left-[80px] border-[#000000] border-t-[1px] border-b-[1px]">
+      <div className="w-[1209px] h-[46px] bg-[#22d3ee] absolute top-[204px] left-[80px] border-[#000000] border-t-[1px] border-b-[1px]">
         <ul className="flex justify-evenly items-center">
           <li className="list-none">
             <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
