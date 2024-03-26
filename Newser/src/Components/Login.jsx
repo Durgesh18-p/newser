@@ -2,9 +2,30 @@ import image from "../Assets/image1.jpg";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { useState } from "react";
+import { app } from "./firebase";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
   const [closeeye, setCloseeye] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    console.log("handleLogin envoked");
+    createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const handleLoginWithGoogle = () => {
+    signInWithPopup(auth, googleProvider);
+  };
 
   const handleCloseEye = () => {
     setCloseeye(!closeeye);
@@ -119,13 +140,19 @@ const Login = () => {
             placeholder="Email...."
             required
             className="w-[200px] border-[#000000] border-[1px] p-[5px] rounded "
+            onChange={(e) => {
+              setEmail(email, ...e.target.value);
+            }}
           />
           <input
             type={closeeye ? "password" : "text"}
             placeholder="Password...."
             required
             className="w-[200px] border-[#000000] border-[1px] p-[5px] rounded "
-          />
+            onChange={(e) => {
+              setPassword(password, ...e.target.value);
+            }}
+          />{" "}
           {closeeye ? (
             <FaEyeSlash
               className="text-[22px] absolute top-[175px] right-[255px] cursor-pointer"
@@ -142,6 +169,20 @@ const Login = () => {
             />
           )}
         </div>
+        <button
+          onClick={() => {
+            handleLogin();
+          }}
+        >
+          LogIn
+        </button>
+        <button
+          onClick={() => {
+            handleLoginWithGoogle();
+          }}
+        >
+          LogInwith Google
+        </button>
       </form>
     </div>
   );
