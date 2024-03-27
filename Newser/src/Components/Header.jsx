@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { indexIncrement } from "./newsReducer";
+import { indexIncrement, isAuthenticated } from "./newsReducer";
 import { slogans } from "./data";
 
 const Header = () => {
   const index = useSelector((state) => state.news.index);
-
   const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    console.log("Logged out");
+    dispatch(isAuthenticated(false));
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,6 +22,13 @@ const Header = () => {
 
   return (
     <div className="w-[100vw] h-[200px] bg-[#ecf0e7] grid place-items-center">
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+      >
+        LogOut
+      </button>
       <h1 className="tiro-devanagari text-center fw-[700] text-[50px] ">
         N
         <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
