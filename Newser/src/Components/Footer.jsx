@@ -26,7 +26,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="h-[200px] w-[100vw] bg-[#ecf0e7] border-t-[1px] border-[#000000] grid place-items-center">
+    <footer
+      className="h-[200px] w-[100vw] bg-[#ecf0e7] border-t-[1px] border-[#000000] grid place-items-center"
+      id="footer"
+    >
       <div>
         <h1 className=" font-bold tiro-devanagari text-[25px]">
           Contact Developer
