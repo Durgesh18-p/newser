@@ -22,14 +22,21 @@ const Header = () => {
 
   return (
     <div className="w-[100vw] h-[200px] bg-[#ecf0e7] grid place-items-center">
-      <button
-        onClick={() => {
-          handleLogout();
-        }}
-      >
-        LogOut
-      </button>
-      <h1 className="tiro-devanagari text-center fw-[700] text-[50px] ">
+      <div className="flex justify-between items-center w-[100%] pr-[100px] pl-[55px] ">
+        {" "}
+        <button
+          onClick={() => {
+            handleLogout();
+          }}
+          className=" p-[5px] border-[1px] border-[#000000] rounded font-[500]"
+        >
+          LogOut
+        </button>
+        <button className=" p-[5px] border-[1px] border-[#000000] rounded font-[500]">
+          Contact Developer
+        </button>
+      </div>
+      <h1 className="tiro-devanagari text-center fw-[700] text-[65px] ">
         N
         <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
           orth
