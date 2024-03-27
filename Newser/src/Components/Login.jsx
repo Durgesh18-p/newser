@@ -125,7 +125,7 @@ const Login = () => {
       </div>
       <form
         action=""
-        className="form-control absolute top-[280px] right-[340px] rounded text-center "
+        className="form-control absolute top-[280px] right-[340px] rounded text-center flex-wrap"
       >
         <h1 className="text-[25px] tiro-devanagari mt-[5px]">
           To stay updated in this fast changing world LogIn to{" "}
@@ -174,16 +174,17 @@ const Login = () => {
           onClick={() => {
             handleSignin();
           }}
+          className="border-[1px] bg-[#4338ca] p-[7px] rounded w-[200px] absolute left-[250px] mt-[10px] font-bold"
         >
           LogIn
         </button>
-        <div className="flex gap-[10px] border-[1px] border-[#4338ca] p-[10px] rounded-full w-[200px] justify-center items-center absolute left-[250px] mt-[10px]">
-          <FaGoogle className="google-logo" />
+        <div className="flex gap-[10px] border-[1px] border-[#4338ca] p-[7px] rounded-full w-[200px] justify-center items-center absolute left-[250px] top-[250px] mt-[10px] hover:bg-[#93c5fd]">
+          <FaGoogle />
           <button
             onClick={() => {
               handleLoginWithGoogle();
             }}
-            className="font-bold"
+            className="font-bold "
           >
             LogIn with Google
           </button>
