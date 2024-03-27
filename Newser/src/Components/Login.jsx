@@ -1,14 +1,11 @@
-import image from "../Assets/image1.jpg";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { useState } from "react";
-import { app } from "./firebase";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import app from "./firebase";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FaGoogle } from "react-icons/fa";
+import { isAuthenticated } from "./newsReducer";
+import { useDispatch } from "react-redux";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -17,14 +14,23 @@ const Login = () => {
   const [closeeye, setCloseeye] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  // const [error, setError] = useState("");
+  // console.log(error);
 
-  const handleLogin = () => {
-    console.log("handleLogin envoked");
-    createUserWithEmailAndPassword(auth, email, password);
+  const handleSignin = () => {
+    try {
+      dispatch(isAuthenticated(true));
+      // setUser(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleLoginWithGoogle = () => {
-    signInWithPopup(auth, googleProvider);
+    signInWithPopup(auth, googleProvider).then((data) => {
+      data && dispatch(isAuthenticated(true));
+    });
   };
 
   const handleCloseEye = () => {
@@ -32,13 +38,8 @@ const Login = () => {
   };
 
   return (
-    <div className="w-[100vw] h-[100vh] ">
-      <img
-        src={image}
-        alt=""
-        className="h-[850px] w-[2000px] object-cover z-1 bg-cover"
-      />
-      <div className="h-[130px] w-[1175px] bg-[#ecf0e7] border-[#000000]  absolute top-[13px] left-[120px] flex justify-center items-center">
+    <div className="w-[100vw] h-[100vh] bg-[#ecf0e7]">
+      <div className="h-[130px] w-[1175px]  border-[#000000]  absolute top-[13px] left-[120px] flex justify-center items-center">
         <h1 className="tiro-devanagari text-center fw-[700] text-[100px] ">
           N
           <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
@@ -67,7 +68,7 @@ const Login = () => {
         </h1>
       </div>
 
-      <div className="bg-[#ecf0e7] w-[1210px] absolute top-[170px] left-[82px] h-[34px]  flex justify-between items-center">
+      <div className=" w-[1210px] absolute top-[170px] left-[82px] h-[34px]  flex justify-between items-center">
         <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
           No. 49,425
         </h2>
@@ -171,18 +172,22 @@ const Login = () => {
         </div>
         <button
           onClick={() => {
-            handleLogin();
+            handleSignin();
           }}
         >
           LogIn
         </button>
-        <button
-          onClick={() => {
-            handleLoginWithGoogle();
-          }}
-        >
-          LogInwith Google
-        </button>
+        <div className="flex gap-[10px] border-[1px] border-[#4338ca] p-[10px] rounded-full w-[200px] justify-center items-center absolute left-[250px] mt-[10px]">
+          <FaGoogle className="google-logo" />
+          <button
+            onClick={() => {
+              handleLoginWithGoogle();
+            }}
+            className="font-bold"
+          >
+            LogIn with Google
+          </button>
+        </div>
       </form>
     </div>
   );
