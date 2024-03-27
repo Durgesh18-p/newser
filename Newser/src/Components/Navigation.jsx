@@ -1,13 +1,32 @@
 import { countries, categories } from "./data";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCategory, setSelectedCountry } from "./newsReducer";
+import { Navigate } from "react-router-dom";
 
 const Navigation = () => {
+  //   const dispatch = useDispatch();
+  //   const city = useSelector((state) => state.news.country);
+  //   const category = useSelector((state) => state.news.category);
+  //   const isAuthenticated = useSelector((state) => state.news.isAuthenticated);
+  //   console.log(city);
+  //   console.log(category);
+
+  //   const handleCountrySelector = (e) => {
+  //     const countryname = e.target.value;
+  //     dispatch(setSelectedCountry(countryname));
+  //   };
+
+  //   const handleCategorySelector = (category) => {
+  //     if (!isAuthenticated) {
+  //       console.log(category.code);
+  //       dispatch(setSelectedCategory(category.code));
+  //     } else {
+  //       return <Navigate to="/" />;
+  //     }
+  //   };
+
   const dispatch = useDispatch();
-  const city = useSelector((state) => state.news.country);
-  const category = useSelector((state) => state.news.category);
-  console.log(city);
-  console.log(category);
+  const isAuthenticated = useSelector((state) => state.news.isAuthenticated);
 
   const handleCountrySelector = (e) => {
     const countryname = e.target.value;
@@ -15,8 +34,13 @@ const Navigation = () => {
   };
 
   const handleCategorySelector = (category) => {
-    console.log(category.code);
-    dispatch(setSelectedCategory(category.code));
+    if (!isAuthenticated) {
+      // Redirect to login if not authenticated
+      return <Navigate to="/" />;
+    } else {
+      // Dispatch action to set selected category
+      dispatch(setSelectedCategory(category.code));
+    }
   };
 
   return (
