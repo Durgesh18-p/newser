@@ -1,10 +1,9 @@
-.im-fell  {
+.im-fell {
   font-family: "IM Fell French Canon SC", serif;
   font-weight: 900;
   font-style: normal;
   font-size: larger;
 }
-
 
 .tiro-devanagari {
   font-family: "Tiro Devanagari Marathi", serif;
@@ -12,7 +11,7 @@
   font-style: normal;
 }
 
-.edu-tas  {
+.edu-tas {
   font-family: "Edu TAS Beginner", cursive;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -30,4 +29,16 @@
   border: none; /* Remove default border */
   border-left: 2px solid #000000; /* Set a left border with desired width and color */
   /* You can also use border-right for a line on the right side */
+}
+
+.google-logo {
+  background-image: linear-gradient(
+    to right,
+    #4285f4,
+    #db4437,
+    #f4b400,
+    #0f9d58
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
