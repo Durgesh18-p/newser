@@ -2,31 +2,12 @@ import { countries, categories } from "./data";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCategory, setSelectedCountry } from "./newsReducer";
 import { Navigate } from "react-router-dom";
+import { useState, useEffect } from "react"; // Import useState and useEffect
 
 const Navigation = () => {
-  //   const dispatch = useDispatch();
-  //   const city = useSelector((state) => state.news.country);
-  //   const category = useSelector((state) => state.news.category);
-  //   const isAuthenticated = useSelector((state) => state.news.isAuthenticated);
-  //   console.log(city);
-  //   console.log(category);
-
-  //   const handleCountrySelector = (e) => {
-  //     const countryname = e.target.value;
-  //     dispatch(setSelectedCountry(countryname));
-  //   };
-
-  //   const handleCategorySelector = (category) => {
-  //     if (!isAuthenticated) {
-  //       console.log(category.code);
-  //       dispatch(setSelectedCategory(category.code));
-  //     } else {
-  //       return <Navigate to="/" />;
-  //     }
-  //   };
-
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.news.isAuthenticated);
+  const [isSticky, setIsSticky] = useState(false); // State to manage sticky behavior
 
   const handleCountrySelector = (e) => {
     const countryname = e.target.value;
@@ -35,16 +16,35 @@ const Navigation = () => {
 
   const handleCategorySelector = (category) => {
     if (!isAuthenticated) {
-      // Redirect to login if not authenticated
       return <Navigate to="/" />;
     } else {
-      // Dispatch action to set selected category
       dispatch(setSelectedCategory(category.code));
     }
   };
 
+  // Function to handle scroll event
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsSticky(true); // If scrolled, set sticky to true
+    } else {
+      setIsSticky(false); // If not scrolled, set sticky to false
+    }
+  };
+
+  // Add event listener when component mounts
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Remove event listener when component unmounts
+    };
+  }, []);
+
   return (
-    <nav className="border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center w-[100vw] ">
+    <nav
+      className={`border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center w-[100vw] ${
+        isSticky ? "sticky top-0 z-10 bg-white" : ""
+      }`}
+    >
       <div className="w-[70%] flex justify-around items-center md:w-[100%]">
         <div>
           {" "}
