@@ -20,6 +20,7 @@ const HomePage = () => {
 
           // "https://newsapi.org/v2/top-headlines?country=in&apiKey=9f134be0ed224a269de69186ec1358e1"
         );
+        
         setData(response.data.articles);
         setLoading(false);
       } catch (error) {
