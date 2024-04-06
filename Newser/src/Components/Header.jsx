@@ -15,7 +15,7 @@ const Header = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(indexIncrement());
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -31,9 +31,6 @@ const Header = () => {
           className=" p-[5px] border-[1px] border-[#000000] rounded font-[500]"
         >
           LogOut
-        </button>
-        <button className=" p-[5px] border-[1px] border-[#000000] rounded font-[500]">
-          Contact Developer
         </button>
       </div>
       <h1 className="tiro-devanagari text-center fw-[700] text-[65px] ">
