@@ -47,9 +47,9 @@ const Login = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#ecf0e7] p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#ecf0e7] p-8">
       <div className="flex flex-col items-center mb-8">
-        <h1 className="tiro-devanagari font-bold text-5xl md:text-7xl lg:text-8xl text-center">
+        <h1 className="tiro-devanagari font-bold text-5xl md:text-7xl lg:text-8xl text-center ml-2">
           N
           <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
             orth
@@ -71,7 +71,7 @@ const Login = () => {
             very
           </span>
           N
-          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-3">
             ews
           </span>
         </h1>
