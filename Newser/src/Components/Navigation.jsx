@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"; // Import useState and useEffect
 const Navigation = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.news.isAuthenticated);
+  const selectedCategory = useSelector((state) => state.news.selectedCategory);
   const [isSticky, setIsSticky] = useState(false); // State to manage sticky behavior
 
   const handleCountrySelector = (e) => {
@@ -41,21 +42,19 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`border-t-[1px] border-b-[1px] border-[#000000] h-[50px] grid place-items-center w-[100vw] ${
+      className={`border-t border-b border-black h-12 grid place-items-center w-full ${
         isSticky ? "sticky top-0 z-10 bg-white" : ""
       }`}
     >
-      <div className="w-[70%] flex justify-around items-center md:w-[100%]">
-        <div>
-          {" "}
+      <div className="w-11/12 flex flex-col md:flex-row justify-between items-center md:w-full px-4 md:px-8 lg:px-16">
+        <div className="w-full md:w-auto mb-2 md:mb-0">
           <select
             name="country"
             id="country"
-            className="border-[1px] border-[#000000] text-[#4338ca] font-bold rounded cursor-pointer p-[3px] "
+            className="border border-black text-blue-700 font-bold rounded cursor-pointer p-2 w-full md:w-auto dropdown"
             onChange={handleCountrySelector}
-            style={{ maxHeight: "100px" }}
           >
-            <option value="" className="text-[#485155]">
+            <option value="" className="text-gray-600">
               Country
             </option>
             {countries.map((country) => {
@@ -63,7 +62,7 @@ const Navigation = () => {
                 <option
                   value={country.code}
                   key={country.code}
-                  className="ml-[55px] border-[#000000] text-[#485155]"
+                  className="ml-2 border-black text-gray-600"
                 >
                   {country.name}
                 </option>
@@ -71,17 +70,17 @@ const Navigation = () => {
             })}
           </select>
         </div>
-        <div>
-          <ul
-            className="flex
-          justify-evenly items-center gap-[25px]
-          "
-          >
+        <div className="w-full md:w-auto">
+          <ul className="flex flex-wrap justify-center md:justify-between items-center gap-4 md:gap-8">
             {categories.map((category) => {
               return (
                 <li
                   key={category.code}
-                  className="font-bold text-[#485155] border-r-[1px] pr-[15px] border-[#000000] cursor-pointer hover:text-[#000000] active:text-[#4338ca]"
+                  className={`font-bold text-gray-600 border-b-2 md:border-b-0 md:border-r-2 md:pr-4 border-black cursor-pointer hover:text-black active:text-blue-700 ${
+                    selectedCategory === category.code
+                      ? "text-blue-700 border-blue-700"
+                      : ""
+                  }`}
                   onClick={() => handleCategorySelector(category)}
                 >
                   {category.name}
@@ -96,3 +95,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+// Add this CSS to your global CSS file or within a style block in your component
