@@ -7,6 +7,8 @@ import { FaGoogle } from "react-icons/fa";
 import { isAuthenticated } from "./newsReducer";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -18,6 +20,20 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleSignin = () => {
+    if (email === "" || password === "") {
+      toast.error("Please fill in both email and password.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        // theme: "colored",
+      });
+      return;
+    }
+
     try {
       dispatch(isAuthenticated(true));
     } catch (error) {
@@ -169,6 +185,7 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
