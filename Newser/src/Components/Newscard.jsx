@@ -11,47 +11,41 @@ const Newscard = ({
   publishedAt,
 }) => {
   return (
-    <div className="border-[2px] p-[10px] relative h-[485px] rounded-lg transition-all ease-in-out hover:border-[#000000]">
-      {urlToImage ? (
-        <Link to={url} target="_blank" rel="noopener noreferrer">
-          <img src={urlToImage} className="w-[100%] h-[250px] border-[1px]" />
-        </Link>
-      ) : (
-        <Link to={url} target="_blank" rel="noopener noreferrer">
-          <img
-            src={imageNotFound}
-            className="w-[100%] h-[250px] border-[1px]"
-          />
-        </Link>
-      )}
+    <div className="w-[430px] border-2 p-4 relative rounded-lg transition-all ease-in-out hover:border-black h-auto md:h-[550px]">
+      <Link to={url} target="_blank" rel="noopener noreferrer">
+        <img
+          src={urlToImage || imageNotFound}
+          className="w-full h-48 md:h-60 lg:h-64 border mb-4 object-cover"
+        />
+      </Link>
 
-      <p className="text-[#249598] hover:text-[#4338ca] text-[18px] w-[400px] tiro-devanagari font-normal mt-[5px]">
+      <p className="text-blue-500 hover:text-blue-700 text-lg w-full md:w-96 font-bold mt-2">
         {title}.{" "}
       </p>
 
-      <p className="mt-[5px] mb-[2px] roboto-slab text-[16px] text-[#202224]">
+      <p className="mt-2 mb-1 font-semibold text-[18px] text-gray-800">
         {content && content.slice(0, 80)}...
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="edu-tas text-[blue]"
+          className="text-blue-600"
         >
           read more
         </a>
       </p>
-      <p className="mt-[12px] mb-[2px] roboto-slab text-[14px] text-[#202224]">
+      <p className="mt-3 mb-1 text-[16px] font-semibold text-gray-800">
         {description && description.slice(0, 100)}{" "}
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="edu-tas text-[blue]"
+          className="text-blue-600"
         >
           ...read more
         </a>
       </p>
-      <p className="absolute right-[20px] bottom-[5px] roboto-slab text-[14px]">
+      <p className="absolute right-5 bottom-3 text-sm mt-8">
         {publishedAt.slice(0, 10)}{" "}
       </p>
     </div>

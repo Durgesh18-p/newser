@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <div className="w-full min-h-[200px] bg-[#f5f5f5] grid place-items-center py-4">
-      <div className="flex justify-between items-center w-full px-4 md:px-8 lg:px-16">
+      <div className="flex justify-between items-center w-full px-4 md:px-8 lg:px-16 mb-4">
         <button
           onClick={handleLogout}
           className="p-2 border border-black rounded font-medium bg-white hover:bg-gray-200 transition duration-200"

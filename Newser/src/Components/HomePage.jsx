@@ -20,7 +20,7 @@ const HomePage = () => {
 
           // "https://newsapi.org/v2/top-headlines?country=in&apiKey=9f134be0ed224a269de69186ec1358e1"
         );
-        
+
         setData(response.data.articles);
         setLoading(false);
       } catch (error) {
@@ -144,7 +144,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4 p-[10px]">
+    <div className="flex justify-center items-center flex-wrap  gap-4 p-[10px] mt-20 ">
       {data.map((news, index) => {
         const { content, description, publishedAt, title, url, urlToImage } =
           news;

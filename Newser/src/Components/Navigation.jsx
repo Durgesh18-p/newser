@@ -43,7 +43,7 @@ const Navigation = () => {
   return (
     <nav
       className={`border-t border-b border-black h-12 grid place-items-center w-full ${
-        isSticky ? "sticky top-0 z-10 bg-white" : ""
+        isSticky ? "sticky top-0 bg-white z-10" : ""
       }`}
     >
       <div className="w-11/12 flex flex-col md:flex-row justify-between items-center md:w-full px-4 md:px-8 lg:px-16">
@@ -70,7 +70,7 @@ const Navigation = () => {
             })}
           </select>
         </div>
-        <div className="w-full md:w-auto">
+        <div className="w-full md:w-auto bg-white p-2">
           <ul className="flex flex-wrap justify-center md:justify-between items-center gap-4 md:gap-8">
             {categories.map((category) => {
               return (
@@ -95,5 +95,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// Add this CSS to your global CSS file or within a style block in your component
