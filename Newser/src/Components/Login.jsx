@@ -6,6 +6,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FaGoogle } from "react-icons/fa";
 import { isAuthenticated } from "./newsReducer";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -15,13 +16,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  // const [error, setError] = useState("");
-  // console.log(error);
 
   const handleSignin = () => {
     try {
       dispatch(isAuthenticated(true));
-      // setUser(true);
     } catch (error) {
       console.log(error);
     }
@@ -37,154 +35,135 @@ const Login = () => {
     setCloseeye(!closeeye);
   };
 
+  const words = [
+    "National",
+    "World",
+    "Business",
+    "Lifestyle",
+    "Travel",
+    "Technology",
+    "Sport",
+    "Weather",
+  ];
+
   return (
-    <div className="w-[100vw] h-[100vh] bg-[#ecf0e7]">
-      <div className="h-[130px] w-[1175px]  border-[#000000]  absolute top-[13px] left-[120px] flex justify-center items-center">
-        <h1 className="tiro-devanagari text-center fw-[700] text-[100px] ">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#ecf0e7] p-4">
+      <div className="flex flex-col items-center mb-8">
+        <h1 className="tiro-devanagari font-bold text-5xl md:text-7xl lg:text-8xl text-center">
           N
-          <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
             orth
           </span>
           E
-          <span className="tiro-devanagari text-center fw-[400] text-[18px]">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl">
             ast
           </span>
           W
-          <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
             est
           </span>
           S
-          <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
             outh
           </span>
           E
-          <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
             very
           </span>
           N
-          <span className="tiro-devanagari text-center fw-[400] text-[18px] mr-[5px]">
+          <span className="tiro-devanagari text-lg md:text-xl lg:text-2xl mr-1">
             ews
           </span>
         </h1>
-      </div>
-
-      <div className=" w-[1210px] absolute top-[170px] left-[82px] h-[34px]  flex justify-between items-center">
-        <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
-          No. 49,425
+        <h2 className="roboto-slab font-medium text-lg md:text-xl lg:text-xl mt-4">
+          EST - 2023
         </h2>
-        <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
+        <h2 className="roboto-slab font-semibold text-lg md:text-xl lg:text-2xl mb-1">
           THE BEST SELLING NEWSPAPER IN THE WORLD.
         </h2>
-        <h2 className="roboto-slab mb-[4px] font-bold text-[20px]">
+        <h2 className="roboto-slab font-medium text-lg md:text-xl lg:text-xl">
           Today's Edition
         </h2>
       </div>
-      <div className="w-[1209px] h-[46px] bg-[#22d3ee] absolute top-[204px] left-[80px] border-[#000000] border-t-[1px] border-b-[1px]">
-        <ul className="flex justify-evenly items-center">
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              National
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              world
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              Business
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              Lifestyle
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              Travet
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              Technology
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              Sport
-            </h2>
-          </li>
-          <li className="list-none">
-            <h2 className="roboto-slab mb-[4px] font-bold text-[30px] text-[#ffffff]">
-              Weather
-            </h2>
-          </li>
-        </ul>
+      <div className="w-full bg-[#22d3ee] py-2 border-t border-b border-black overflow-hidden">
+        <motion.div
+          className="flex justify-around items-center"
+          initial={{ x: "100%" }}
+          animate={{ x: "-100%" }}
+          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+        >
+          {words.map((word, index) => (
+            <motion.h2
+              key={index}
+              className="roboto-slab text-xl md:text-2xl lg:text-3xl text-white"
+              initial={{ x: "100%" }}
+              animate={{ x: "-100%" }}
+              transition={{
+                repeat: Infinity,
+                duration: 15,
+                ease: "linear",
+                delay: index * 1, // delay each word by 1 second
+              }}
+            >
+              {word}
+            </motion.h2>
+          ))}
+        </motion.div>
       </div>
-      <form
-        action=""
-        className="form-control absolute top-[280px] right-[340px] rounded text-center flex-wrap"
-      >
-        <h1 className="text-[25px] tiro-devanagari mt-[5px]">
+      <form className="form-control mt-8 flex flex-col items-center w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+        <h1 className="text-2xl md:text-2xl lg:text-2xl font-bold text-center mb-4">
           To stay updated in this fast changing world LogIn to{" "}
           <span className="text-[#4338ca]">NEWSEN</span>
         </h1>
-        <p className="edu-tas text-[20px] text-[#485155] mt-[20px]">
+        <p className="edu-tas text-lg md:text-xl lg:text-2xl text-[#485155] mb-6 text-center">
           “Ink spills truth, headlines roar.”
         </p>
-
-        <div className="flex flex-col gap-2 items-center mt-[30px]">
+        <div className="w-full flex flex-col items-center space-y-4">
           <input
             type="email"
             placeholder="Email...."
             required
-            className="w-[200px] border-[#000000] border-[1px] p-[5px] rounded "
+            className="w-full border border-black p-2 rounded"
             onChange={(e) => {
-              setEmail(email, ...e.target.value);
+              setEmail(e.target.value);
             }}
           />
-          <input
-            type={closeeye ? "password" : "text"}
-            placeholder="Password...."
-            required
-            className="w-[200px] border-[#000000] border-[1px] p-[5px] rounded "
-            onChange={(e) => {
-              setPassword(password, ...e.target.value);
-            }}
-          />{" "}
-          {closeeye ? (
-            <FaEyeSlash
-              className="text-[22px] absolute top-[175px] right-[255px] cursor-pointer"
-              onClick={() => {
-                handleCloseEye();
+          <div className="w-full relative">
+            <input
+              type={closeeye ? "password" : "text"}
+              placeholder="Password...."
+              required
+              className="w-full border border-black p-2 rounded"
+              onChange={(e) => {
+                setPassword(e.target.value);
               }}
             />
-          ) : (
-            <IoMdEye
-              className="text-[22px] absolute top-[175px] right-[255px] cursor-pointer"
-              onClick={() => {
-                handleCloseEye();
-              }}
-            />
-          )}
+            {closeeye ? (
+              <FaEyeSlash
+                className="text-xl absolute top-2 right-2 cursor-pointer"
+                onClick={handleCloseEye}
+              />
+            ) : (
+              <IoMdEye
+                className="text-xl absolute top-2 right-2 cursor-pointer"
+                onClick={handleCloseEye}
+              />
+            )}
+          </div>
         </div>
         <button
-          onClick={() => {
-            handleSignin();
-          }}
-          className="border-[1px] bg-[#4338ca] p-[7px] rounded w-[200px] absolute left-[250px] mt-[10px] font-bold"
+          type="button"
+          onClick={handleSignin}
+          className="mt-4 w-full bg-[#4338ca] text-white font-bold py-2 rounded hover:bg-[#6366f1]"
         >
           LogIn
         </button>
-        <div className="flex gap-[10px] border-[1px] border-[#4338ca] p-[7px] rounded-full w-[200px] justify-center items-center absolute left-[250px] top-[250px] mt-[10px] hover:bg-[#93c5fd]">
-          <FaGoogle />
+        <div className="mt-4 flex items-center justify-center w-full border border-[#4338ca] py-2 rounded-full hover:bg-[#93c5fd] cursor-pointer">
+          <FaGoogle className="mr-2" />
           <button
-            onClick={() => {
-              handleLoginWithGoogle();
-            }}
-            className="font-bold "
+            type="button"
+            onClick={handleLoginWithGoogle}
+            className="font-bold text-[#4338ca]"
           >
             LogIn with Google
           </button>
